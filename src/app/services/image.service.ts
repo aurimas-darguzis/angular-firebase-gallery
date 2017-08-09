@@ -21,4 +21,8 @@ export class ImageService {
     });
   }
 
+  getImages(): Observable<GalleryImage[]> {
+    return this.db.list('uploads');
+  }
+
 }
