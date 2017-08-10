@@ -1,3 +1,7 @@
+import { UploadService } from './services/upload.service';
+import { ImageService } from './services/image.service';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationGuard } from './services/authenticationGuard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -24,7 +28,10 @@ import { UploadComponent } from './upload/upload.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [AuthenticationGuard,
+              AuthenticationService,
+              ImageService,
+              UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
