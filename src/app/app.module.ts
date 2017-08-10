@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment.prod';
 import { UploadService } from './services/upload.service';
 import { ImageService } from './services/image.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -6,6 +7,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -13,6 +19,8 @@ import { ImageDetailComponent } from './image-detail/image-detail.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { UploadComponent } from './upload/upload.component';
+
+import { appRoutes } from '../routes';
 
 @NgModule({
   declarations: [
@@ -26,7 +34,11 @@ import { UploadComponent } from './upload/upload.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(appRoutes),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [AuthenticationGuard,
               AuthenticationService,
