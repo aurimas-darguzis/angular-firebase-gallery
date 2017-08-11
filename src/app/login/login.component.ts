@@ -7,11 +7,18 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
-  constructor(private authS: AuthenticationService) { }
+  email: string;
+  password: string;
+  errorMsg: string;
 
-  ngOnInit() {
-  }
+  constructor(private authS: AuthenticationService, private router: Router) { }
+
+ signIn() {
+   this.authS.login({ email: this.email, password: this.password })
+    .then(resolve => this.router.navigate(['gallery']))
+    .catch(error => this.errorMsg = error.message);
+ }
 
 }
