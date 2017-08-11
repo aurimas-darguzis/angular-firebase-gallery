@@ -20,5 +20,4 @@ export class LoginComponent {
     .then(resolve => this.router.navigate(['gallery']))
     .catch(error => this.errorMsg = error.message);
  }
-
 }
