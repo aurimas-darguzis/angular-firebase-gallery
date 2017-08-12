@@ -13,12 +13,14 @@ export class NavbarComponent implements OnInit {
   title: 'Gallery';
   user: Observable<firebase.User>;
 
-  constructor(private authService: AuthenticationService, private route: Router) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
     this.user = this.authService.authUser();
   }
 
-
+  logOut() {
+    this.authService.logout().then(onResolve => this.router.navigate['/']);
+  }
 
 }
