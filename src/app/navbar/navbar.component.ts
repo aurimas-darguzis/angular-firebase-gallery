@@ -1,3 +1,7 @@
+import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
+import { AuthenticationService } from './../services/authentication.service';
+import * as firebase from 'firebase/app';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  title: 'Gallery';
+  user: Observable<firebase.User>;
 
-  constructor() { }
+  constructor(private authService: AuthenticationService, private route: Router) { }
 
   ngOnInit() {
+    this.user = this.authService.authUser();
   }
+
+
 
 }
