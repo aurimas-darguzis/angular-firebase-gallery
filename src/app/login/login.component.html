@@ -30,7 +30,7 @@
 </form>
 
 
-<form [formGroup]="userForm"  *ngIf="!newUser"  (ngSubmit)="login()">
+<form [formGroup]="userForm"  *ngIf="!newUser"  (ngSubmit)="signIn()">
 
   <h3>Existing User Login</h3>
   <p class="btn btn-sm btn-secondary" (click)="toggleForm()">New User?</p>
