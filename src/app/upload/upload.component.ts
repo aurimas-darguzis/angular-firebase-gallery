@@ -11,9 +11,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
+  files: FileList;
+  upload: Upload;
 
-  ngOnInit() {
+  constructor(private uploadService: UploadService) { }
+
+  ngOnInit () {
+  }
+
+  uploadFiles () {
+    const filesToUpload = this.files;
+    const filesIdx = _.range(filesToUpload.length);
   }
 
 }
