@@ -1,4 +1,8 @@
+import { UploadService } from './../services/upload.service';
+import { Upload } from '../models/upload.model';
+import * as  _ from 'lodash';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-upload',
