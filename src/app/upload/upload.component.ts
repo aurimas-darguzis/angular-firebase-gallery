@@ -25,7 +25,11 @@ export class UploadComponent implements OnInit {
 
   uploadFiles () {
     const filesToUpload = this.files;
-    const filesIdx = _.range(filesToUpload.length);
+    const filesIdx = _.range(filesToUpload.length); // console.log _.range to see what it holds
+    _.each(filesIdx, (idx) => {
+      this.upload = new Upload(filesToUpload[idx]);
+      this.uploadService.uploadFile(this.upload);
+    });
   }
 
 }
