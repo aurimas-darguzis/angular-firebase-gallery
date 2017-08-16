@@ -19,6 +19,10 @@ export class UploadComponent implements OnInit {
   ngOnInit () {
   }
 
+  handleFiles (event) {
+    this.files = event.target.files;
+  }
+
   uploadFiles () {
     const filesToUpload = this.files;
     const filesIdx = _.range(filesToUpload.length);
