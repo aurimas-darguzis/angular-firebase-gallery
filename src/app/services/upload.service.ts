@@ -16,11 +16,11 @@ export class UploadService {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
 
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED),
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       // three observers
       // 1. state_changed observer
       (snapshot) => {
-        upload.progress = (uploadTask.snapshot.bytesTransferred / uploadTask.totalBytes) * 100;
+        upload.progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100;
       },
       // 2. error observer
       (error) => {
@@ -30,9 +30,10 @@ export class UploadService {
       (): any => {
         upload.url = uploadTask.snapshot.downloadURL;
         this.saveFileData(upload);
-      };
-  };
-
-  // private saveFileData (upload: Upload)
-
+      }
+    );
+}
+private  saveFileData (upload: Upload) {
+    this.db.list(`${this.basePath}/`).push(upload);
+  }
 }
