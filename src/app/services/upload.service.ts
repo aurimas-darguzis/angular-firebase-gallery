@@ -36,5 +36,6 @@ export class UploadService {
 }
 private  saveFileData (upload: Upload) {
     this.db.list(`${this.basePath}/`).push(upload);
+    console.log('File saved!:' , upload.url);
   }
 }
