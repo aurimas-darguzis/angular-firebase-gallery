@@ -29,6 +29,7 @@ export class UploadService {
       // 3. success observer
       (): any => {
         upload.url = uploadTask.snapshot.downloadURL;
+        upload.name = upload.file.name;
         this.saveFileData(upload);
       }
     );
