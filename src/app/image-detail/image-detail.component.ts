@@ -17,7 +17,7 @@ export class ImageDetailComponent implements OnInit {
 
   getImageUrl(key) {
     this.imageService.getImage(key)
-      .then(imageUrl => this.imageUrl = imageUrl.url);
+      .then(image => this.imageUrl = image.url);
   }
 
   ngOnInit() {
