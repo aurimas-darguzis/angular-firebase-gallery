@@ -25,4 +25,9 @@ export class ImageService {
     return this.db.list('uploads');
   }
 
+  getImage(key: string) {
+    return firebase.database().ref('upload/' + key).once('value')
+      .then((snap) => snap.val());
+  }
+
 }
