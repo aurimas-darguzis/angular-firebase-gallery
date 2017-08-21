@@ -1,8 +1,9 @@
+import { Injectable } from '@angular/core';
 import { Upload } from './../models/upload.model';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { GalleryImage } from './../models/galleryImage.model';
 import { AngularFireModule } from 'angularfire2';
-import { Injectable } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class UploadService {
